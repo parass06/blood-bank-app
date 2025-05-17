@@ -5,6 +5,8 @@ import plotly.express as px
 from sqlalchemy import create_engine, text
 import pymysql
 
+app = dash.Dash(__name__)
+server = app.server  # <- ye Render ko batata hai ki server kaun sa hai
 # ---------- SQLAlchemy Engine Setup ----------
 
 def get_engine():
@@ -193,4 +195,5 @@ def search_donors(value, search_type):
 
 # ---------- Run App ----------
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=8080)
+
